@@ -1,0 +1,531 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>HTML5拖放API | 清弦子@个人博客</title><meta name="author" content="清弦子"><meta name="copyright" content="清弦子"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="用于拖拽网页中的元素并放置到页面上的指定区域或直接将本地文件拖放在网页中  一、DragEvent事件 继承于事件MouseEvent DragEvent的常用事件     事件名称 存储模式 时间目标 解释    ondragstart 读写模式 该事件由被拖拽的元素触发 当用户刚开始拖动元素时触发该事件   ondrag 保护模式 该事件由被拖拽的元素触发 当元素处于被拖动状态时触发该事件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5拖放API">
+<meta property="og:url" content="http://qingxianzi002.github.io/archives/809c9837.html">
+<meta property="og:site_name" content="清弦子@个人博客">
+<meta property="og:description" content="用于拖拽网页中的元素并放置到页面上的指定区域或直接将本地文件拖放在网页中  一、DragEvent事件 继承于事件MouseEvent DragEvent的常用事件     事件名称 存储模式 时间目标 解释    ondragstart 读写模式 该事件由被拖拽的元素触发 当用户刚开始拖动元素时触发该事件   ondrag 保护模式 该事件由被拖拽的元素触发 当元素处于被拖动状态时触发该事件">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qingxianzi002/blogimage/Image/Background/%E6%98%9F%E7%A9%BA2.jpeg">
+<meta property="article:published_time" content="2023-08-06T18:13:53.895Z">
+<meta property="article:modified_time" content="2023-08-06T18:35:43.691Z">
+<meta property="article:author" content="清弦子">
+<meta property="article:tag" content="html知识点">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/qingxianzi002/blogimage/Image/Background/%E6%98%9F%E7%A9%BA2.jpeg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/qingxianzi002/blogimage/Image/Logo/网页logo.jpg"><link rel="canonical" href="http://qingxianzi002.github.io/archives/809c9837.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="codeva-vTd2VOYX8S"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: 清弦子","link":"链接: ","source":"来源: 清弦子@个人博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'HTML5拖放API',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-07 02:35:43'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.jsdelivr.net/gh/qingxianzi002/blogimage/Image/Logo/古风男头像.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/mapDepot/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/qingxianzi002/blogimage/Image/Background/星空2.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="清弦子@个人博客"><img class="site-icon" src="https://cdn.jsdelivr.net/gh/qingxianzi002/blogimage/Image/Logo/古风男头像.png"/><span class="site-name">清弦子@个人博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/mapDepot/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">HTML5拖放API</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-08-06T18:13:53.895Z" title="发表于 2023-08-07 02:13:53">2023-08-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-08-06T18:35:43.691Z" title="更新于 2023-08-07 02:35:43">2023-08-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="HTML5拖放API"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><ul>
+<li>用于拖拽网页中的元素并放置到页面上的指定区域或直接将本地文件拖放在网页中</li>
+</ul>
+<h2 id="一、DragEvent事件"><a href="#一、DragEvent事件" class="headerlink" title="一、DragEvent事件"></a>一、DragEvent事件</h2><ul>
+<li>继承于事件MouseEvent</li>
+<li>DragEvent的常用事件</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">事件名称</th>
+<th align="center">存储模式</th>
+<th align="center">时间目标</th>
+<th align="center">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ondragstart</td>
+<td align="center">读写模式</td>
+<td align="center">该事件由被拖拽的元素触发</td>
+<td align="center">当用户刚开始拖动元素时触发该事件</td>
+</tr>
+<tr>
+<td align="center">ondrag</td>
+<td align="center">保护模式</td>
+<td align="center">该事件由被拖拽的元素触发</td>
+<td align="center">当元素处于被拖动状态时触发该事件</td>
+</tr>
+<tr>
+<td align="center">ondragenter</td>
+<td align="center">保护模式</td>
+<td align="center">该事件由被拖拽的元素触发</td>
+<td align="center">当被拖动的元素进入到可以被放置下来的有效区域的瞬间触发该事件</td>
+</tr>
+<tr>
+<td align="center">ondragleave</td>
+<td align="center">保护模式</td>
+<td align="center">该事件由被拖拽的元素触发</td>
+<td align="center">当被拖动的元素离开了可以被放置下来的有效区域的瞬间触发该事件</td>
+</tr>
+<tr>
+<td align="center">ondragover</td>
+<td align="center">保护模式</td>
+<td align="center">该事件由目标区域元素触发</td>
+<td align="center">当被拖动的元素处于可以被放置下来的有效区域内时，该事件会不停地被触发。该事状态在dragenter之后，在dragleave之前</td>
+</tr>
+<tr>
+<td align="center">ondrop</td>
+<td align="center">只读模式</td>
+<td align="center">该事件由目标区域元素触发</td>
+<td align="center">当被拖动的元素被放置在有效的区域时触发该事件</td>
+</tr>
+<tr>
+<td align="center">ondragend</td>
+<td align="center">保护模式</td>
+<td align="center">该事件由被拖拽的元素触发</td>
+<td align="center">当拖动操作结束时激发该事件。例如，在拖动元素的过程中释放鼠标左键或按下键盘上的Esc键均可触发该事件。该事件状态在drop之后。</td>
+</tr>
+</tbody></table>
+<ul>
+<li>在整个拖放生命周期触发的事件按照顺序如下：</li>
+</ul>
+<p>​    dragstart  ——  drag  ——  dragenter  ——  dragover  ——  dragleave  ——  drop  ——  dragend</p>
+<h2 id="二、DataTransfer对象"><a href="#二、DataTransfer对象" class="headerlink" title="二、DataTransfer对象"></a>二、DataTransfer对象</h2><ul>
+<li>HTML5拖放API允许在拖放过程中携带一项或多项自定义数据内容</li>
+<li>数据内容可以使用拖放事件DragEvent中的datatransfer属性（来源于HTML5的DataTransfer对象）进行添加和处理</li>
+<li>DataTransfer对象的属性</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">属性名称</th>
+<th align="center">属性值</th>
+<th align="center">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">dopEffect</td>
+<td align="center"><strong>none</strong>【不允许任何操作】、<strong>copy</strong>【该状态下被拖拽的元素将复制一个副本放到指定的放置区域】、<strong>move</strong>【该状态下被拖拽的元素将移动到指定的放置区域，该属性值为默认值】、<strong>link</strong>【该状态下被拖拽的元素与被放置区域之间将创建连接】</td>
+<td align="center">改属性用于获取或重置当前的拖放类型</td>
+</tr>
+<tr>
+<td align="center">effetAllowed</td>
+<td align="center"><strong>none</strong>【不允许任何操作】、<strong>copy</strong>【只允许复制操作】、<strong>copyLink</strong>【允许复制或者链接】、<strong>copyMove</strong>【允许复制或者移动】、<strong>link</strong>【只允许链接操作】、<strong>linkMove</strong>【允许链接或移动】、<strong>move</strong>【只允许移动操作】、<strong>all</strong>【允许所有（复制、移动或链接）操作】、<strong>uninitialized</strong>【尚未设置，等同于all】</td>
+<td align="center">提供所有允许的拖放类型</td>
+</tr>
+<tr>
+<td align="center">types</td>
+<td align="center">DOMString[]</td>
+<td align="center">该属性为只读属性。返回值为字符串数组。包含了所有存入数据的类型</td>
+</tr>
+<tr>
+<td align="center">items</td>
+<td align="center">DataTransferItemList对象</td>
+<td align="center">该属性为只读模式。返回值为DataTransferItemList对象，该对象是以列表的形式保存所有的存入数据</td>
+</tr>
+<tr>
+<td align="center">files</td>
+<td align="center">FileList对象</td>
+<td align="center">该属性为只读模式。如果拖放的是一个或多个本地文件，则该属性返回值为文件列表对象。如果拖放过程中没有涉及本地文件，则本地列表为空</td>
+</tr>
+</tbody></table>
+<ul>
+<li>DataTransfer对象的常用方法</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">方法名称</th>
+<th align="center">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">getData(format)</td>
+<td align="center">获取DataTransfer对象中的format格式的数据。一般在ondrop事件中使用，获取传递的数据内容。其中format替换成某种数据类型，例如，纯文本类型为text&#x2F;plain</td>
+</tr>
+<tr>
+<td align="center">setData(format,data)</td>
+<td align="center">将数据设置为format格式，并保存在DataTransfer对象中进行传递。一般在ondragstart事件中使用，设置需要传递的数据内容【可以添加不同类型的数据，如纯文本类型（text&#x2F;plain），超链接类型（text&#x2F;uri-list），HTML代码类型（text&#x2F;html）】</td>
+</tr>
+<tr>
+<td align="center">clearData([format])</td>
+<td align="center">清除DataTransfer对象中format格式的数据。如果省略参数，则表示清除全部数据</td>
+</tr>
+<tr>
+<td align="center">setDragImage(image,x,y)</td>
+<td align="center">设置拖拽元素时所显示的自定义图标。其中image为图片对象，x和y分别指的是图标与鼠标在水平和垂直方向上的距离</td>
+</tr>
+</tbody></table>
+<h2 id="三、拖放元素过程"><a href="#三、拖放元素过程" class="headerlink" title="三、拖放元素过程"></a>三、拖放元素过程</h2><ul>
+<li><p>实现拖放的主要过程：</p>
+<ul>
+<li>为需要被拖放的元素添加draggable属性（设置为true，表示为可拖放状态；设置为false，表示为不可拖放状态），使其允许被拖放；</li>
+</ul>
+<p>​       示例：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">draggable</span> = <span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line">	内容</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>具体代码示例：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>HTML5拖放API之设置可拖放元素<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">            <span class="selector-tag">p</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">width</span>:<span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">height</span>:<span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">background-color</span>:yellow;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">        </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h3</span>&gt;</span>HTML5拖放API之设置可拖放元素<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">draggable</span> = <span class="string">&quot;true&quot;</span>&gt;</span>这是一个可拖放的段落元素.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>代码测试结果：</p>
+<p>​                           <img src="https://raw.githubusercontent.com/qingxianzi002/My_note/main/pictureHTML5%E6%8B%96%E6%94%BEAPI%E5%9B%BE1.png" style="zoom: 67%;" /></p>
+<p>​                          <img src="https://raw.githubusercontent.com/qingxianzi002/My_note/main/pictureHTML5%E6%8B%96%E6%94%BEAPI%E5%9B%BE2.png">       </p>
+<ul>
+<li>在被拖拽元素的ondragstart事件中初始化需要传递的数据信息（监听元素刚被拖动的状态，同时也可以为ondragstart事件设置自定义名称的回调函数）</li>
+</ul>
+<p>​      示例：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;p draggable = <span class="string">&quot;true&quot;</span> ondragstart = <span class="string">&quot;drag(event)&quot;</span>&gt;</span><br><span class="line">    内容</span><br><span class="line">&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">当用户开始拖动元素时，元素的ondragstart事件会被触发并调用drag（）函数来传递参数event对象，其中event.<span class="property">datatransfer</span>属性用于在拖放过程中传递数据</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">drag</span>(<span class="params">ev</span>)&#123;</span><br><span class="line">    ev.<span class="property">dataTransfer</span>.<span class="title function_">setData</span>(<span class="string">&quot;text/plain&quot;</span>,<span class="string">&quot;Hello HTML5&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  在event事件中的target属性表示被拖拽的元素对象，所以可以用纯文本类型传递元素对象的id名称</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">drag</span>(<span class="params">ev</span>)&#123;</span><br><span class="line">	ev.<span class="property">dataTransfer</span>.<span class="title function_">setData</span>(<span class="string">&quot;text/plain&quot;</span>,ev.<span class="property">target</span>.<span class="property">id</span>);  <span class="comment">//传递元素id名称</span></span><br><span class="line">&#125;</span><br><span class="line">有利于使用<span class="title function_">getData</span>()方法获取id名称，并且使用<span class="variable language_">document</span>.<span class="title function_">getElementById</span>()方法获得并处理被拖拽元素的对象</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>为作为放置区域的元素设置ondragover事件，取消默认操作【可放置区域的元素（该元素指就在要放置的区域内）必须带有ondragover事件，用于监听是否可有可拖放的元素进入目标区域】</li>
+</ul>
+<p>​       示例：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;p ondragover = <span class="string">&quot;allowDrop(event)&quot;</span>&gt;</span><br><span class="line">    内容</span><br><span class="line">&lt;/p&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//回调函数allowDrop()和drop()名称自定义，表示当前事件触发时的处理操作</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">allowDrop</span>(<span class="params">ev</span>)&#123;</span><br><span class="line">    ev.<span class="title function_">preventDefault</span>();  <span class="comment">//阻止默认处理方式（无法将元素放置到可放置的区域内）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>为作为放置区域的元素设置ondrop事件（不是被拖拽的元素，而是一直在该放置区域的元素触发的），接受并处理传递过来的数据内容（前提是通过datatransfer.getData()方法获取传递的数据内容）</li>
+</ul>
+<p>​     示例：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;p ondragover = <span class="string">&quot;allowDrop(event)&quot;</span> ondrop = <span class="string">&quot;drop(event)&quot;</span>&gt;</span><br><span class="line">	内容</span><br><span class="line">&lt;/p&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//回调函数drop()名称自定义</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">drop</span>(<span class="params">ev</span>)&#123;</span><br><span class="line">	ev.<span class="title function_">preventDefault</span>();   <span class="comment">//先阻止默认行为（ondrop事件默认是以超链接的形式打开数据）</span></span><br><span class="line">	<span class="keyword">var</span> data = ev.<span class="property">datatransfer</span>.<span class="title function_">getData</span>(<span class="string">&quot;text&quot;</span>);  <span class="comment">//获取数据，另这里的括号可以简写为text或url，如果没有找到指定数据内容，返回空字符串</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>具体代码如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span> = <span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>测试<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">            <span class="selector-tag">p</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">width</span>:<span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">height</span>:<span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">background-color</span>:yellow;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="selector-id">#container</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">border</span>:<span class="number">1px</span> solid;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">width</span>:<span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">height</span>:<span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">        </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h3</span>&gt;</span>测试<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;test&quot;</span> <span class="attr">draggable</span> = <span class="string">&quot;true&quot;</span> <span class="attr">ondragstart</span> = <span class="string">&quot;drag(event)&quot;</span>&gt;</span></span><br><span class="line">            这是一个可以被拖放的段落元素。</span><br><span class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;container&quot;</span> <span class="attr">ondragover</span> = <span class="string">&quot;allowDrop(event)&quot;</span> <span class="attr">ondrop</span> = <span class="string">&quot;drop(event)&quot;</span>&gt;</span></span><br><span class="line">            这是一个可以用于放置被拖放元素的区域</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">function</span> <span class="title function_">drag</span>(<span class="params">ev</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">                ev.<span class="property">dataTransfer</span>.<span class="title function_">setData</span>(<span class="string">&quot;text/plain&quot;</span>,ev.<span class="property">target</span>.<span class="property">id</span>);</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">function</span> <span class="title function_">allowDrop</span>(<span class="params">ev</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">                ev.<span class="title function_">preventDefault</span>();</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">function</span> <span class="title function_">drop</span>(<span class="params">ev</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">                ev.<span class="title function_">preventDefault</span>();</span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">var</span> id = ev.<span class="property">dataTransfer</span>.<span class="title function_">getData</span>(<span class="string">&quot;text&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">var</span> p = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(id);</span></span><br><span class="line"><span class="language-javascript">                ev.<span class="property">target</span>.<span class="title function_">appendChild</span>(p);</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">        </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>代码测试结果：</p>
+<p>初始状态：</p>
+<p>​                                              <img src="https://raw.githubusercontent.com/qingxianzi002/My_note/main/pictureHTML5%E6%8B%96%E6%94%BEAPI%E5%9B%BE3.png"></p>
+<p>拖动状态：</p>
+<p>​                                                <img src="https://raw.githubusercontent.com/qingxianzi002/My_note/main/pictureHTML5%E6%8B%96%E6%94%BEAPI%E5%9B%BE4.png"></p>
+<p>放置状态：</p>
+<p>​                                              <img src="https://raw.githubusercontent.com/qingxianzi002/My_note/main/pictureHTML5%E6%8B%96%E6%94%BEAPI%E5%9B%BE5.png"></p>
+</li>
+</ul>
+<h2 id="四、自定义拖放图标"><a href="#四、自定义拖放图标" class="headerlink" title="四、自定义拖放图标"></a>四、自定义拖放图标</h2><ul>
+<li><code>setDragImage(image,x,y);</code>自定义拖拽时显示的图标；一般用于ondragstart事件的回调函数中，表示从拖动动作开始时更改拖放图标；</li>
+</ul>
+<p>​       示例：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">function drag(ev)&#123;</span><br><span class="line">    var img = new Image();</span><br><span class="line">    img.src = &quot;image/star.jpg&quot;;</span><br><span class="line">    ev.dataTransfer.setDragImage(img,10,10);  //鼠标箭头（在图里）离图标左上角水平和垂直的距离</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>一句话就是：原本拖拽文字时会鼠标会携带着相应的文字，而定义上述图标后，就会由携带的文字变成定义的图片；</li>
+</ul>
+<h2 id="五、自定义拖放行为"><a href="#五、自定义拖放行为" class="headerlink" title="五、自定义拖放行为"></a>五、自定义拖放行为</h2><ul>
+<li><p>DataTransfer对象具有effectAllowed和dropEffect属性用于规定拖放行为</p>
+</li>
+<li><p>拖放时，三种常见效果：</p>
+<ul>
+<li>copy——表示被拖拽的数据从它的初始位置复制到可放置区域</li>
+<li>move——表示被拖拽的数据将从它的初始位置移动到可放置区域</li>
+<li>link——–表示被拖拽的数据将从它的初始位置链接一个快捷方式到可放置区域</li>
+</ul>
+</li>
+<li><p>一般在<strong>ondragstart</strong>事件被触发时通过设置<strong>effectAllowed</strong>属性值来规定允许进行哪种操作。</p>
+</li>
+<li><p>一般在<strong>dragenter</strong>或<strong>dragover</strong>事件被触发时通过设置<strong>dropEffect</strong>属性值来规定允许进行哪种操作。</p>
+</li>
+</ul>
+<p>​       示例：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">ev.dataTransfer.effectAllowed = &quot;move&quot;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>具体操作行为，可参考<a href="#%E4%BA%8C%E3%80%81DataTransfer%E5%AF%B9%E8%B1%A1">DataTransfer对象</a></p>
+</li>
+<li><p>effectAllowed与dropEffect属性取值对照表</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">effectAllowed设置的取值</th>
+<th align="center">dropEffect允许的取值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">none</td>
+<td align="center">none</td>
+</tr>
+<tr>
+<td align="center">copy</td>
+<td align="center">copy</td>
+</tr>
+<tr>
+<td align="center">copyLink</td>
+<td align="center">copy或link</td>
+</tr>
+<tr>
+<td align="center">copyMove</td>
+<td align="center">copy或move</td>
+</tr>
+<tr>
+<td align="center">link</td>
+<td align="center">link</td>
+</tr>
+<tr>
+<td align="center">linkMove</td>
+<td align="center">link或move</td>
+</tr>
+<tr>
+<td align="center">move</td>
+<td align="center">move</td>
+</tr>
+<tr>
+<td align="center">all</td>
+<td align="center">copy、link或move任意其一</td>
+</tr>
+<tr>
+<td align="center">uninitialized并且被拖拽的元素为文本内容</td>
+<td align="center">move或copy</td>
+</tr>
+<tr>
+<td align="center">uninitialized并且被拖拽的元素为普通元素</td>
+<td align="center">cpy或link</td>
+</tr>
+<tr>
+<td align="center">uninitialized并且被拖拽的元素为带href属性的超链接元素<code>&lt;a&gt;</code></td>
+<td align="center">link或copy</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>代码如下：</p>
+   <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>HTML5拖放API之自定义拖放行为<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">            <span class="selector-tag">p</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">width</span>:<span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">height</span>:<span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">background-color</span>:lightblue;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">float</span><span class="selector-pseudo">:left</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">margin</span>:<span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">text-align</span>:center;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="selector-tag">div</span><span class="selector-id">#container</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">border</span>:<span class="number">1px</span> solid;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">width</span>:<span class="number">340px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">height</span>:<span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">clear</span>:both;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">margin</span>:<span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">text-align</span>:center;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">        </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h3</span>&gt;</span>测试<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;test1&quot;</span> <span class="attr">draggable</span>=<span class="string">&quot;true&quot;</span> <span class="attr">ondragstart</span> = <span class="string">&quot;drag1(event)&quot;</span>&gt;</span></span><br><span class="line">            拖拽效果<span class="tag">&lt;<span class="name">br</span>&gt;</span>move</span><br><span class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span> = <span class="string">&quot;test2&quot;</span> <span class="attr">draggable</span> = <span class="string">&quot;true&quot;</span> <span class="attr">ondragstart</span> = <span class="string">&quot;drag2(event)&quot;</span>&gt;</span></span><br><span class="line">            拖拽效果<span class="tag">&lt;<span class="name">br</span>&gt;</span>copy</span><br><span class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span> = <span class="string">&quot;test3&quot;</span> <span class="attr">draggable</span>=<span class="string">&quot;true&quot;</span> <span class="attr">ondragstart</span> = <span class="string">&quot;drag3(event)&quot;</span>&gt;</span></span><br><span class="line">            拖拽效果<span class="tag">&lt;<span class="name">br</span>&gt;</span>link</span><br><span class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;container&quot;</span> <span class="attr">ondragover</span> = <span class="string">&quot;allowDrop(event)&quot;</span> <span class="attr">ondrop</span> = <span class="string">&quot;drop(event)&quot;</span>&gt;</span></span><br><span class="line">            可放置区域</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">function</span> <span class="title function_">drag1</span>(<span class="params">ev</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">var</span> dataTrans = ev.<span class="property">dataTransfer</span>;</span></span><br><span class="line"><span class="language-javascript">                dataTrans.<span class="property">effectAllowed</span> = <span class="string">&quot;move&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">                dataTrans.<span class="title function_">setData</span>(<span class="string">&quot;text/plain&quot;</span>,ev.<span class="property">target</span>.<span class="property">id</span>);</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">function</span> <span class="title function_">drag2</span>(<span class="params">ev</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">var</span> dataTrans = ev.<span class="property">dataTransfer</span>;</span></span><br><span class="line"><span class="language-javascript">                dataTrans.<span class="property">effectAllowed</span> = <span class="string">&quot;copy&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">                dataTrans.<span class="title function_">setData</span>(<span class="string">&quot;text/plain&quot;</span>,ev.<span class="property">target</span>.<span class="property">id</span>);</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">function</span> <span class="title function_">drag3</span>(<span class="params">ev</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">var</span> dataTrans = ev.<span class="property">dataTransfer</span>;</span></span><br><span class="line"><span class="language-javascript">                dataTrans.<span class="property">effectAllowed</span> = <span class="string">&quot;link&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">                dataTrans.<span class="title function_">setData</span>(<span class="string">&quot;text/plain&quot;</span>,ev.<span class="property">target</span>.<span class="property">id</span>);</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">function</span> <span class="title function_">allowDrop</span>(<span class="params">ev</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">                ev.<span class="title function_">preventDefault</span>();</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">function</span> <span class="title function_">drop</span>(<span class="params">ev</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">                ev.<span class="title function_">preventDefault</span>();</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">        </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>代码测试结果:</p>
+<p>​                                               <img src="https://raw.githubusercontent.com/qingxianzi002/My_note/main/pictureHTML5%E6%8B%96%E6%94%BEAPI%E5%9B%BE6.png">      </p>
+<p><img src="https://raw.githubusercontent.com/qingxianzi002/My_note/main/pictureHTML5%E6%8B%96%E6%94%BEAPI%E5%9B%BE7.png"></p>
+<p><img src="https://raw.githubusercontent.com/qingxianzi002/My_note/main/pictureHTML5%E6%8B%96%E6%94%BEAPI%E5%9B%BE8.png"></p>
+<p><strong>从上方三幅结果图中可看出不同的拖放行为导致鼠标指针呈现不同的样式</strong></p>
+<h2 id="六、本地文件的拖放"><a href="#六、本地文件的拖放" class="headerlink" title="六、本地文件的拖放"></a>六、本地文件的拖放</h2><ul>
+<li>就是通过DataTransfer对象的files属性获取文件列表，而无须设置传递数据内容</li>
+<li>代码如下：</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span> = <span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>HTML5拖放API之本地文件拖放<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">            <span class="selector-id">#fileCheck</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">width</span>:<span class="number">300px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">height</span>:<span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">border</span>:<span class="number">1px</span> dashed;  <span class="comment">/*宽度为1像素的虚线框*/</span></span></span><br><span class="line"><span class="language-css">                <span class="attribute">margin</span>:<span class="number">20px</span>;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="selector-tag">li</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">margin</span>:<span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">        </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h3</span>&gt;</span>测试<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;fileCheck&quot;</span> <span class="attr">ondragover</span> = <span class="string">&quot;allowDrop(event)&quot;</span> <span class="attr">ondrop</span>=<span class="string">&quot;drop(event)&quot;</span>&gt;</span>   </span><br><span class="line">            请将文件拖放至此处。</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;status&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">function</span> <span class="title function_">allowDrop</span>(<span class="params">ev</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="comment">//解除当前元素为可放置被拖拽元素的区域</span></span></span><br><span class="line"><span class="language-javascript">                ev.<span class="title function_">preventDefault</span>();</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">function</span> <span class="title function_">drop</span>(<span class="params">ev</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="comment">//解除当前元素为可放置被拖拽元素的区域</span></span></span><br><span class="line"><span class="language-javascript">                ev.<span class="title function_">preventDefault</span>();</span></span><br><span class="line"><span class="language-javascript">                <span class="comment">//获取拖拽的文件列表</span></span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">var</span> files = ev.<span class="property">dataTransfer</span>.<span class="property">files</span>;</span></span><br><span class="line"><span class="language-javascript">                <span class="comment">//记录文件的状态信息等</span></span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">var</span> fileStatus;</span></span><br><span class="line"><span class="language-javascript">                <span class="comment">//获取单个文件对象</span></span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">var</span> f;</span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;files.<span class="property">length</span>;i++)&#123;</span></span><br><span class="line"><span class="language-javascript">                    f = files[i];</span></span><br><span class="line"><span class="language-javascript">                    <span class="keyword">var</span> lastModified = f.<span class="property">lastModifiedDate</span>;  <span class="comment">//把最近的一次修改时间给它</span></span></span><br><span class="line"><span class="language-javascript">                    <span class="keyword">var</span> lastModifiedStr = lastModified.<span class="title function_">toLocaleString</span>();   <span class="comment">//将日期时间显示为纯文本形式</span></span></span><br><span class="line"><span class="language-javascript">                    <span class="comment">//组合文件相关信息</span></span></span><br><span class="line"><span class="language-javascript">                    fileStatus += <span class="string">&#x27;&lt;li&gt;文件名称：&#x27;</span>+f.<span class="property">name</span>+<span class="string">&#x27;&lt;br&gt;文件类型：&#x27;</span>+f.<span class="property">type</span>+<span class="string">&#x27;&lt;br&gt;文件大小：&#x27;</span>+f.<span class="property">size</span>+<span class="string">&#x27;字节&lt;br&gt;修改时间：&#x27;</span>+lastModifiedStr+<span class="string">&#x27;&lt;/li&gt;&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript">                &#125;</span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">var</span> status = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;status&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">                status.<span class="property">innerHTML</span> = <span class="string">&#x27;&lt;ul&gt;&#x27;</span>+fileStatus+<span class="string">&#x27;&lt;/ul&gt;&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">        </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>代码测试结果：</p>
+<p>​                              <img src="https://raw.githubusercontent.com/qingxianzi002/My_note/main/pictureHTML5%E6%8B%96%E6%94%BEAPI%E5%9B%BE9.png" style="zoom:150%;" /></p>
+<p>​                            <img src="https://raw.githubusercontent.com/qingxianzi002/My_note/main/pictureHTML5%E6%8B%96%E6%94%BEAPI%E5%9B%BE10.png">   </p>
+<h2 id="七、关于target在事件中指的是什么的探究"><a href="#七、关于target在事件中指的是什么的探究" class="headerlink" title="七、关于target在事件中指的是什么的探究"></a>七、关于target在事件中指的是什么的探究</h2><p>通过不断查证，得出一条结论：<strong>target的指向与定义它的事件有关，谁触发了事件，target就指代谁；</strong></p>
+<h2 id="八、关于-container与div-container之间的区别或联系的探究"><a href="#八、关于-container与div-container之间的区别或联系的探究" class="headerlink" title="八、关于#container与div#container之间的区别或联系的探究"></a>八、关于#container与div#container之间的区别或联系的探究</h2><p>代码如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span> = <span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>测试<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">            <span class="selector-tag">div</span><span class="selector-id">#container</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">background-color</span>:blue;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">        </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h3</span>&gt;</span>测试<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">            我是一个小宝贝</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">            阿呆撒大所大大所多所多撒大所大多;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>测试结果如下：</p>
+<p><img src="https://raw.githubusercontent.com/qingxianzi002/My_note/main/pictureHTML5%E6%8B%96%E6%94%BEAPI%E5%9B%BE11.png"></p>
+<p><font color="red">【分析】:综上所述，div#container意思是只有在div的标签且id为container中有用，除此之外，其他id为container的标签无法对其产生影响。而#container是对所有id为container的标签起作用</font></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://qingxianzi002.github.io">清弦子</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://qingxianzi002.github.io/archives/809c9837.html">http://qingxianzi002.github.io/archives/809c9837.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://qingxianzi002.github.io" target="_blank">清弦子@个人博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/html%E7%9F%A5%E8%AF%86%E7%82%B9/">html知识点</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/qingxianzi002/blogimage/Image/Background/星空2.jpeg" data-sites="twitter,wechat,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/archives/8d5e8ad0.html" title="HTML5基础"><img class="cover" src="https://cdn.jsdelivr.net/gh/qingxianzi002/blogimage/Image/Background/星空1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">HTML5基础</div></div></a></div><div class="next-post pull-right"><a href="/archives/733216e8.html" title="HTML媒体API"><img class="cover" src="https://cdn.jsdelivr.net/gh/qingxianzi002/blogimage/Image/Background/星空1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">HTML媒体API</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/archives/2a7754ee.html" title="HTML5 Web 存储API"><img class="cover" src="https://cdn.jsdelivr.net/gh/qingxianzi002/blogimage/Image/Background/星空2.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-07</div><div class="title">HTML5 Web 存储API</div></div></a></div><div><a href="/archives/8d5e8ad0.html" title="HTML5基础"><img class="cover" src="https://cdn.jsdelivr.net/gh/qingxianzi002/blogimage/Image/Background/星空1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-07</div><div class="title">HTML5基础</div></div></a></div><div><a href="/archives/79795e27.html" title="HTML5地理定位API"><img class="cover" src="https://cdn.jsdelivr.net/gh/qingxianzi002/blogimage/Image/Background/星空2.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-07</div><div class="title">HTML5地理定位API</div></div></a></div><div><a href="/archives/44e34c56.html" title="HTML5表单API"><img class="cover" src="https://cdn.jsdelivr.net/gh/qingxianzi002/blogimage/Image/Background/星空2.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-07</div><div class="title">HTML5表单API</div></div></a></div><div><a href="/archives/1cf26778.html" title="HTML5画布API"><img class="cover" src="https://cdn.jsdelivr.net/gh/qingxianzi002/blogimage/Image/Background/星空1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-07</div><div class="title">HTML5画布API</div></div></a></div><div><a href="/archives/733216e8.html" title="HTML媒体API"><img class="cover" src="https://cdn.jsdelivr.net/gh/qingxianzi002/blogimage/Image/Background/星空1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-07</div><div class="title">HTML媒体API</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81ODgwMS8zNTI2Mw=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/qingxianzi002/blogimage/Image/Logo/古风男头像.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">清弦子</div><div class="author-info__description">陌城，陌路，陌生人，一城相思，两段年轮，三秋不见，葬了红尘……</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://www.youtube.com/" rel="external nofollow noreferrer" target="_blank" title="Youtube"><i class="fab fa-youtube" style="color: #FF0000;"></i></a><a class="social-icon" href="https://twitter.com/home" rel="external nofollow noreferrer" target="_blank" title="Twitter"><i class="fab fa-twitter" style="color: #87CEEB;"></i></a><a class="social-icon" href="https://www.google.com.hk/?pccc=1" rel="external nofollow noreferrer" target="_blank" title="Google"><i class="fab fa-google" style="color: #db3236;"></i></a><a class="social-icon" href="mailto:3028477588@qq.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #000000;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Hi, welcome to my blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81DragEvent%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">一、DragEvent事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81DataTransfer%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.</span> <span class="toc-text">二、DataTransfer对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%8B%96%E6%94%BE%E5%85%83%E7%B4%A0%E8%BF%87%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">三、拖放元素过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8B%96%E6%94%BE%E5%9B%BE%E6%A0%87"><span class="toc-number">4.</span> <span class="toc-text">四、自定义拖放图标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8B%96%E6%94%BE%E8%A1%8C%E4%B8%BA"><span class="toc-number">5.</span> <span class="toc-text">五、自定义拖放行为</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E7%9A%84%E6%8B%96%E6%94%BE"><span class="toc-number">6.</span> <span class="toc-text">六、本地文件的拖放</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E5%85%B3%E4%BA%8Etarget%E5%9C%A8%E4%BA%8B%E4%BB%B6%E4%B8%AD%E6%8C%87%E7%9A%84%E6%98%AF%E4%BB%80%E4%B9%88%E7%9A%84%E6%8E%A2%E7%A9%B6"><span class="toc-number">7.</span> <span class="toc-text">七、关于target在事件中指的是什么的探究</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E5%85%B3%E4%BA%8E-container%E4%B8%8Ediv-container%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB%E6%88%96%E8%81%94%E7%B3%BB%E7%9A%84%E6%8E%A2%E7%A9%B6"><span class="toc-number">8.</span> <span class="toc-text">八、关于#container与div#container之间的区别或联系的探究</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/archives/1cf26778.html" title="HTML5画布API"><img src="https://cdn.jsdelivr.net/gh/qingxianzi002/blogimage/Image/Background/星空1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HTML5画布API"/></a><div class="content"><a class="title" href="/archives/1cf26778.html" title="HTML5画布API">HTML5画布API</a><time datetime="2023-08-06T18:39:21.137Z" title="更新于 2023-08-07 02:39:21">2023-08-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/43830010.html" title="绪论"><img src="https://cdn.jsdelivr.net/gh/qingxianzi002/blogimage/Image/Background/星空1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="绪论"/></a><div class="content"><a class="title" href="/archives/43830010.html" title="绪论">绪论</a><time datetime="2023-08-06T18:35:43.701Z" title="更新于 2023-08-07 02:35:43">2023-08-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/4ca49cdf.html" title="关系数据库标准语言SQL"><img src="https://cdn.jsdelivr.net/gh/qingxianzi002/blogimage/Image/Background/星空1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关系数据库标准语言SQL"/></a><div class="content"><a class="title" href="/archives/4ca49cdf.html" title="关系数据库标准语言SQL">关系数据库标准语言SQL</a><time datetime="2023-08-06T18:35:43.697Z" title="更新于 2023-08-07 02:35:43">2023-08-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/8b75d63f.html" title="关系数据库"><img src="https://cdn.jsdelivr.net/gh/qingxianzi002/blogimage/Image/Background/星空2.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关系数据库"/></a><div class="content"><a class="title" href="/archives/8b75d63f.html" title="关系数据库">关系数据库</a><time datetime="2023-08-06T18:35:43.694Z" title="更新于 2023-08-07 02:35:43">2023-08-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/809c9837.html" title="HTML5拖放API"><img src="https://cdn.jsdelivr.net/gh/qingxianzi002/blogimage/Image/Background/星空2.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HTML5拖放API"/></a><div class="content"><a class="title" href="/archives/809c9837.html" title="HTML5拖放API">HTML5拖放API</a><time datetime="2023-08-06T18:35:43.691Z" title="更新于 2023-08-07 02:35:43">2023-08-07</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/qingxianzi002/blogimage/Image/Background/星空2.jpeg')"><div id="footer-wrap"><div class="copyright">&copy;2023 By 清弦子</div><div class="footer_custom_text">一颦一笑一伤悲,一生痴迷一世醉</div><div></div><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span><script>var now = new Date();
+function createtime() {
+var grt= new Date("07/25/2023 11:00:00");
+now.setTime(now.getTime()+250);
+days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+}
+setInterval("createtime()",250);</script></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !true) {
+  if (true) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body></html>
