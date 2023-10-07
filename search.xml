@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title></title>
+      <link href="/archives/0.html"/>
+      <url>/archives/0.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h1><h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><ul><li><strong>Spring Framework</strong> 是最早，且是底层框架</li><li><strong>Spring Boot</strong> 提高开发速度，降低成本</li><li><strong>Spkring Cloud</strong> 分布式开发相关技术</li></ul><h2 id="二、Spring-Framework框架构成"><a href="#二、Spring-Framework框架构成" class="headerlink" title="二、Spring Framework框架构成"></a>二、Spring Framework框架构成</h2><ul><li><img src="https://raw.githubusercontent.com/qingxianzi002/My_note/main/Spring%E6%A1%86%E6%9E%B6%E7%BB%93%E6%9E%84%E5%9B%BE.png" alt="image-20231005172432736"></li><li>Core Container 核心容器 ——–&gt; 装对象</li><li>AOP 面向切面编程 ———-&gt; 依赖于Core Container（核心容器）</li><li>Aspects 实现 AOP </li><li>Data Access 数据访问</li><li>Data Integration 数据集成</li><li>Transactions 事务</li><li>Test 单元测试与集成测试</li></ul><h2 id="三、Spring-IOC"><a href="#三、Spring-IOC" class="headerlink" title="三、Spring IOC"></a>三、Spring IOC</h2><ul><li><p>含义为控制反转</p></li><li><pre><code class="java">/*业务层实现*/public class BookServiceImpl implements BookService&#123;    private BookDao bookDao;    public void save()&#123;        bookDao.save();    &#125;&#125;/*数据层实现*/public class BookDaoImpl implements BookDao&#123;    public void save()&#123;        System.out.println(&quot;book dao save ...&quot;);    &#125;&#125;/*以上在业务层中调用BookDao的对象，如果有多个BookDao的实现类--平常方法：直接在业务层的bookDao后面new几个对象（这种方法耦合度过高）--降低耦合度的方法：在另外创建IoC容器，里面存放service、dao层等对象--由此推出控制反转思想是将对象创建控制权由程序转移到外部，而IoC容器充当外部角色，创建和管理的对象充当Bean角色*/</code></pre></li><li><p>IoC容器中service层和dao层是依赖关系（即两个Bean之间是依赖关系）———-&gt;   依赖注入（DI）</p></li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Ajax</title>
       <link href="/archives/65940d5a.html"/>
       <url>/archives/65940d5a.html</url>
