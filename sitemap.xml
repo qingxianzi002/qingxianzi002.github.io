@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://qingxianzi002.github.io/archives/0.html</loc>
+    <loc>http://qingxianzi002.github.io/archives/6c92115f.html</loc>
     
     <lastmod>2023-10-07</lastmod>
     
@@ -361,6 +361,27 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>http://qingxianzi002.github.io/tags/Spring-Framework/</loc>
+    <lastmod>2023-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://qingxianzi002.github.io/tags/Spring-Boot/</loc>
+    <lastmod>2023-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://qingxianzi002.github.io/tags/Spring-Cloud/</loc>
+    <lastmod>2023-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -379,6 +400,13 @@
   
   <url>
     <loc>http://qingxianzi002.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/</loc>
+    <lastmod>2023-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://qingxianzi002.github.io/categories/Spring%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2023-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
